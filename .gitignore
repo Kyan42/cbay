@@ -1,0 +1,6 @@
+node_modules/
+.next/
+app/data/state.json
+.env*
+*.tsbuildinfo
+next-env.d.ts
