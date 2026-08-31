@@ -50,6 +50,15 @@ are a frozen API: renaming one is a breaking change to the test contract, not a 
 | `order-confirmation` | Order page | Confirmation banner |
 | `order-title` | Order page | Purchased listing title |
 | `order-total` | Order page | Order total |
+| `cart-link` | Header | Link to the cart page |
+| `cart-badge` | Header | Total quantity of items in the cart |
+| `add-to-cart` | Listing detail | Add to cart button (always enabled) |
+| `add-error` | Listing detail | Inline error when adding to cart is rejected |
+| `cart-empty` | Cart page | Empty-cart note |
+| `cart-line-<id>` | Cart page | One cart line |
+| `cart-line-title` | Cart page | Title inside a cart line |
+| `qty` | Cart page | Quantity inside a cart line |
+| `subtotal` | Cart page | Cart subtotal |
 
 ## Seeded catalog
 
@@ -73,3 +82,5 @@ Eight listings with fixed ids, prices, and sellers. `l6` is seeded sold out.
 | GET | /api/health | `{ ok: true }` liveness probe |
 | POST | /api/orders | Buy It Now. 201 with `orderId`; 404 unknown listing; 409 sold out |
 | POST | /api/watchlist | Toggle watch state. 200 with `{ watched, count }`; 404 unknown listing |
+| POST | /api/cart | Add one unit to the cart. 201 with `itemCount`; 404 unknown listing; 409 sold out |
+| GET | /api/cart | Current cart lines, item count, and subtotal |
