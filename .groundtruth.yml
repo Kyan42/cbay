@@ -7,6 +7,7 @@ install: npm ci
 setup:
   - npm run seed -- --reset
 start: npm run dev -- --hostname 0.0.0.0 --port 3000   # bind all interfaces so a tunnel can reach it
+reset: npm run seed -- --reset   # restores the seeded catalog and empties orders, watchlist and cart
 port: 3000
 ready:
   path: /api/health          # polled until it answers 200
