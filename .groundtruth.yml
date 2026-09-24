@@ -1,0 +1,13 @@
+# How Groundtruth boots this app in a sandbox. Commands run in order, from `workdir`.
+version: 1
+runtime:
+  node: "22"
+workdir: app
+install: npm ci
+setup:
+  - npm run seed -- --reset
+start: npm run dev -- --hostname 0.0.0.0 --port 3000   # bind all interfaces so a tunnel can reach it
+port: 3000
+ready:
+  path: /api/health          # polled until it answers 200
+  timeout_seconds: 180
