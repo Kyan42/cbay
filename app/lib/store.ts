@@ -11,6 +11,8 @@ export interface Order {
 export interface CartLine {
   listingId: string;
   quantity: number;
+  /** When the item was added (ISO time). Missing on carts saved before this was tracked. */
+  addedAt?: string;
 }
 
 export interface AppState {
