@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getCartView } from "@/lib/cart";
+import { formatAddedAgo, getCartView } from "@/lib/cart";
 import { formatPrice } from "@/lib/catalog";
 
 export default async function CartPage() {
@@ -18,12 +18,17 @@ export default async function CartPage() {
           <ul className="cart-lines">
             {cart.lines.map((line) => (
               <li
-                key={line.listingId}
+                key={`${line.listingId}-${line.addedAt ?? "earlier"}`}
                 className="cart-line"
                 data-testid={`cart-line-${line.listingId}`}
               >
                 <span className="cart-line-title" data-testid="cart-line-title">
                   {line.title}
+                  {line.addedAt ? (
+                    <span className="cart-line-added" data-testid="cart-line-added">
+                      Added {formatAddedAgo(line.addedAt)}
+                    </span>
+                  ) : null}
                 </span>
                 <span className="cart-line-qty">
                   Qty <span data-testid="qty">{line.quantity}</span>

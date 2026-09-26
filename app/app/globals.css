@@ -306,6 +306,14 @@ body {
   font-weight: 600;
 }
 
+.cart-line-added {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
 .cart-line-qty {
   color: var(--muted);
 }
