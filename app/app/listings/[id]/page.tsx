@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { AddToCartButton } from "@/components/AddToCartButton";
 import { BuyItNowButton } from "@/components/BuyItNowButton";
 import { WatchlistToggle } from "@/components/WatchlistToggle";
 import { formatPrice, getListing } from "@/lib/catalog";
@@ -42,6 +43,7 @@ export default async function ListingPage({
         </dl>
         <div className="listing-actions">
           <BuyItNowButton listingId={listing.id} soldOut={listing.soldOut} />
+          <AddToCartButton listingId={listing.id} />
           <WatchlistToggle listingId={listing.id} watched={isWatched(listing.id)} />
         </div>
       </div>

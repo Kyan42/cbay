@@ -51,6 +51,12 @@ body {
 .logo-a { color: var(--yellow); }
 .logo-y { color: var(--green); }
 
+.header-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .watchlist-pill {
   display: flex;
   align-items: center;
@@ -60,6 +66,18 @@ body {
   padding: 0.3rem 0.8rem;
   color: var(--red);
   font-weight: 600;
+}
+
+.cart-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
 }
 
 /* Search */
@@ -237,6 +255,70 @@ body {
 .buy-button:disabled {
   background: var(--muted);
   cursor: not-allowed;
+}
+
+.add-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.add-button {
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--blue);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.add-button:disabled {
+  border-color: var(--muted);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+/* Cart page */
+.cart-page {
+  margin: 2rem auto;
+  max-width: 560px;
+}
+
+.cart-lines {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.cart-line {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-line-title {
+  flex: 1;
+  font-weight: 600;
+}
+
+.cart-line-qty {
+  color: var(--muted);
+}
+
+.cart-line-total {
+  font-weight: 700;
+}
+
+.cart-subtotal {
+  text-align: right;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem;
 }
 
 .watch-button {

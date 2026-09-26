@@ -4,7 +4,7 @@ import path from "node:path";
 const statePath = path.join(process.cwd(), "data", "state.json");
 const reset = process.argv.includes("--reset");
 
-const initialState = { watchlist: [], orders: [], nextOrderNumber: 1 };
+const initialState = { watchlist: [], orders: [], nextOrderNumber: 1, cart: [] };
 
 if (reset || !fs.existsSync(statePath)) {
   fs.mkdirSync(path.dirname(statePath), { recursive: true });

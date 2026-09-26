@@ -8,23 +8,32 @@ export interface Order {
   totalCents: number;
 }
 
+export interface CartLine {
+  listingId: string;
+  quantity: number;
+}
+
 export interface AppState {
   watchlist: string[];
   orders: Order[];
   nextOrderNumber: number;
+  cart: CartLine[];
 }
 
 const STATE_PATH = path.join(process.cwd(), "data", "state.json");
 
 export function initialState(): AppState {
-  return { watchlist: [], orders: [], nextOrderNumber: 1 };
+  return { watchlist: [], orders: [], nextOrderNumber: 1, cart: [] };
 }
 
 export function readState(): AppState {
   if (!fs.existsSync(STATE_PATH)) {
     writeState(initialState());
   }
-  return JSON.parse(fs.readFileSync(STATE_PATH, "utf8")) as AppState;
+  const state = JSON.parse(fs.readFileSync(STATE_PATH, "utf8")) as AppState;
+  // State files written before the cart existed have no cart array.
+  state.cart ??= [];
+  return state;
 }
 
 export function writeState(state: AppState): void {

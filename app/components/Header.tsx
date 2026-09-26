@@ -1,9 +1,11 @@
 import Link from "next/link";
 
+import { cartItemCount } from "@/lib/cart";
 import { getWatchlistCount } from "@/lib/store";
 
 export function Header() {
   const watchlistCount = getWatchlistCount();
+  const itemCount = cartItemCount();
   return (
     <header className="site-header">
       <div className="container site-header-inner">
@@ -13,9 +15,15 @@ export function Header() {
           <span className="logo-a">a</span>
           <span className="logo-y">y</span>
         </Link>
-        <div className="watchlist-pill" title="Watchlisted items">
-          <span aria-hidden>♥</span>
-          <span data-testid="watchlist-count">{watchlistCount}</span>
+        <div className="header-pills">
+          <div className="watchlist-pill" title="Watchlisted items">
+            <span aria-hidden>♥</span>
+            <span data-testid="watchlist-count">{watchlistCount}</span>
+          </div>
+          <Link href="/cart" className="cart-pill" title="Cart" data-testid="cart-link">
+            <span aria-hidden>🛒</span>
+            <span data-testid="cart-badge">{itemCount}</span>
+          </Link>
         </div>
       </div>
     </header>
